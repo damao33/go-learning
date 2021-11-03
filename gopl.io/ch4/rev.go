@@ -1,8 +1,6 @@
 package main
 
-import "fmt"
-
-func main() {
+/* func main() {
 	arr := []int{1, 2, 3, 4, 5, 6}
 	reverse(arr[:2])
 	fmt.Println(arr)
@@ -17,3 +15,4 @@ func reverse(n []int) {
 		n[i], n[j] = n[j], n[i]
 	}
 }
+*/

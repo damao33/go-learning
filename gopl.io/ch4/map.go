@@ -6,7 +6,12 @@ package main
 
 import "fmt"
 
-func main() {
+func mapTest() {
 	age := make(map[string]int)
-	fmt.Println(age["a"])
+	age["0"] = 2
+	age["b"] = 3
+	age["a"] = 4
+	for k, v := range age {
+		fmt.Println(k, v)
+	}
 }

@@ -1,0 +1,20 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ylz.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:queryAppointHidsMark>
+         <!--Optional:-->
+         <Request>
+            <!--Optional:-->
+            <CLINIC_DATE></CLINIC_DATE>
+            <!--Optional:-->
+            <CLINIC_DURATION></CLINIC_DURATION>
+            <!--Optional:-->
+            <DEPT_CODE></DEPT_CODE>
+            <!--Optional:-->
+            <DOCTOR_CODE></DOCTOR_CODE>
+            <!--Optional:-->
+            <schedId>1870807</schedId>
+         </Request>
+      </web:queryAppointHidsMark>
+   </soapenv:Body>
+</soapenv:Envelope>

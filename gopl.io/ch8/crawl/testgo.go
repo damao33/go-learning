@@ -8,6 +8,8 @@
 
 package main
 
+import "fmt"
+
 // func main() {
 // 	chnl := make(chan string, 10)
 // 	chnl <- "a"
@@ -41,6 +43,8 @@ package main
 	flag := make(chan int)
 	// done := make(chan int)
 
+	var n sync.WaitGroup
+	n.Add(4)
 	go func() {
 		slice <- 1
 		slice <- 2
@@ -52,23 +56,29 @@ package main
 
 	go func() {
 		for s := range flag {
+			n.Add(1)
 			fmt.Println("a", s)
 			slice <- s * 10
+			n.Done()
 		}
 		fmt.Println("done1")
 	}()
 	go func() {
+		defer n.Done()
 		for s := range flag {
+			n.Add(1)
 			fmt.Println("b", s)
 			slice <- s * 10
+			n.Done()
 		}
 		fmt.Println("done2")
 	}()
+	go func() {
+		n.Wait()
+		close(slice)
+	}()
+
 	for n := range slice {
-		if n == 0 {
-			close(flag)
-			break
-		}
 		flag <- n
 	}
 
@@ -76,3 +86,20 @@ package main
 
 }
 */
+/* func main() {
+	chnl := make(chan int)
+	close(chnl)
+	fmt.Println(<-chnl)
+	fmt.Println(<-chnl)
+	fmt.Println(<-chnl)
+}
+*/
+func main() {
+	defer func() {
+		fmt.Println("defer1")
+	}()
+	fmt.Println("123")
+	defer func() {
+		fmt.Println("defer2")
+	}()
+}
